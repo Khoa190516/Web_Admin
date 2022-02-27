@@ -1,0 +1,58 @@
+﻿@model Web_Admin.Models.Authen
+@{
+    ViewData["Title"] = "Index";
+    Layout = null;
+}
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Web_Admin.styles.css" asp-append-version="true" />
+    <link href="~/styles/style.css" rel="stylesheet"/>
+    <script src="Web_Admin/alertifyjs\alertify.min.js"></script>
+    <!-- include the style -->
+    <link rel="stylesheet" href="Web_Admin/alertify.min.css" />
+    <!-- include a theme -->
+    <link rel="stylesheet" href="Web_Admin/themes/default.min.css" />
+
+<div class="main"  style="background: url('https://wallpaperaccess.com/full/279547.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;">
+    <br/><br/>
+    <div class="d-flex justify-content-center text-light">
+        <h1>Login Page</h1>
+    </div><br/><br/><br/><br/><br/><br/><br/><br/>
+
+
+    <div class="form-body d-flex justify-content-center">
+        @using (Html.BeginForm())
+        {
+            <div class="form-group">
+                @Html.LabelFor(model => model.uid,new{@class = "text-light"})<br/>
+                @Html.EditorFor(model => model.uid)<br/>
+                @Html.ValidationMessageFor(model => model.uid,"",new { @class = "text-danger" })
+            </div>
+            <br/>
+            <div class="form-group">
+                @Html.LabelFor(model => model.password,new{@class = "text-light"})<br/>
+                @Html.PasswordFor(model => model.password)<br/>
+                @Html.ValidationMessageFor(model => model.password,"",new { @class = "text-danger" })
+            </div>
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn button btn-default border border-light text-light"/>
+                <input style="margin-left:40px;" type="reset" value="Reset" class="btn button btn-default border border-light text-light"/>
+            </div>
+        }
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(function(){
+            var errorMsg = '@TempData["ErrorMessage"]'
+            if(errorMsg!='')
+                alertify.success(errorMsg)
+        });
+    </script>
+}

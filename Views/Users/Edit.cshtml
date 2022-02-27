@@ -1,0 +1,60 @@
+﻿@model Web_Admin.Models.User;
+@{
+    ViewData["Title"] = "Edit";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h1>Update User</h1><br/>
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+
+        @Html.HiddenFor(model => model.uid)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.name)<br/>
+            @Html.EditorFor(model => model.name)<br/>
+            @Html.ValidationMessageFor(model => model.name,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.email)<br/>
+            @Html.EditorFor(model => model.email)<br/>
+            @Html.ValidationMessageFor(model => model.email,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.joinedAt)<br/>
+            @Html.EditorFor(model => model.joinedAt)<br/>
+            @Html.ValidationMessageFor(model => model.joinedAt,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.phoneNumber)<br/>
+            @Html.EditorFor(model => model.phoneNumber)<br/>
+            @Html.ValidationMessageFor(model => model.phoneNumber,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.userImageUrl)<br/>
+            @Html.TextBoxFor(model => model.userImageUrl,new { @style="width:50%;" })<br/>
+            @Html.ValidationMessageFor(model => model.userImageUrl,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.password)<br/>
+            @Html.PasswordFor(model => model.password)<br/>
+            @Html.ValidationMessageFor(model => model.password,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="btn button btn-default border border-dark"/>
+            <input type="reset" value="Reset" class="btn button btn-default border border-dark"/>
+        </div>
+    }
+    
+</div>
+
+<br/>
+    <a href="@Url.Action("Index", "Users")" class="btn btn-default border-dark">Cancel</a>

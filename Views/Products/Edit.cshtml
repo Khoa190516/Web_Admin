@@ -1,0 +1,77 @@
+﻿@model Web_Admin.Models.Product
+@{
+    ViewData["Title"] = "Insert New Product";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h1>Update Product</h1><br/>
+
+<div class="form-body">
+    @using (Html.BeginForm())
+    {
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.title)<br/>
+            @Html.EditorFor(model => model.title)<br/>
+            @Html.ValidationMessageFor(model => model.title,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.description)<br/>
+            @Html.TextBoxFor(model => model.description,new { @style="width:35%;" })<br/>
+            @Html.ValidationMessageFor(model => model.description,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.price)<br/>
+            @Html.EditorFor(model => model.price)<br/>
+            @Html.ValidationMessageFor(model => model.price,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.imageUrl)<br/>
+            @Html.TextBoxFor(model => model.imageUrl,new { @style="width:50%;" })<br/>
+            @Html.ValidationMessageFor(model => model.imageUrl,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.productCategoryName)<br/>
+            @Html.EditorFor(model => model.productCategoryName)<br/>
+            @Html.ValidationMessageFor(model => model.productCategoryName,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.brand)<br/>
+            @Html.EditorFor(model => model.brand)<br/>
+            @Html.ValidationMessageFor(model => model.brand,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.quantity)<br/>
+            @Html.EditorFor(model => model.quantity)<br/>
+            @Html.ValidationMessageFor(model => model.quantity,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.isFavorite)
+            @Html.CheckBoxFor(model => model.isFavorite)<br/>
+            @Html.ValidationMessageFor(model => model.isFavorite,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            @Html.LabelFor(model => model.isPopular)
+            @Html.CheckBoxFor(model => model.isPopular)<br/>
+            @Html.ValidationMessageFor(model => model.isPopular,"",new { @class = "text-danger" })
+        </div>
+        <br/>
+        <div class="form-group">
+            <input type="submit" value="Submit" class="button btn btn-default border border-dark"/>
+            <input type="reset" value="Reset" class="button btn btn-default border border-dark"/>
+        </div>
+    }
+</div>
+
+<br/>
+    <a href="@Url.Action("Index", "Users")" class="btn btn-default border-dark">Cancel</a>
+

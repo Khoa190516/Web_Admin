@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Web_Admin.Models.User>
+
+@{
+    ViewData["Title"] = "User Management";
+}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<h1>User Management</h1>
+
+<div>
+    <p>
+        <a href="@Url.Action("Insert","Users")" class="btn btn-default border border-dark"><i class="fa fa-plus"></i> Create New</a>
+    </p>
+</div>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.uid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.joinedAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phoneNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.userImageUrl)
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.uid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.joinedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phoneNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.userImageUrl)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", "Users", new { id = item.uid })" class="btn btn-default border-dark"><i class="fa fa-pencil"></i> Edit</a>
+                <a href="@Url.Action("Delete", "Users", new { id = item.uid })" class="btn btn-default border-dark"><i class="fa fa-trash"></i> Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
